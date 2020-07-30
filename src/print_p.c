@@ -6,11 +6,28 @@
 /*   By: wsallei <wsallei@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 16:32:25 by wsallei           #+#    #+#             */
-/*   Updated: 2020/07/26 16:32:27 by wsallei          ###   ########.fr       */
+/*   Updated: 2020/07/30 13:52:15 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+static	int		ft_lenp(unsigned long int dig, t_flag *flags)
+{
+	int		lenhex;
+
+	lenhex = 0;
+	if (dig == 0 && flags->dot != 0)
+		return (1);
+	else if (dig == 0 && flags->dot == 0)
+		return (0);
+	while (dig)
+	{
+		dig /= 16;
+		lenhex++;
+	}
+	return (lenhex);
+}
 
 int		ft_pproc(unsigned long int *dig, t_flag *flags, int *dot)
 {
@@ -32,7 +49,7 @@ int		ft_pproc(unsigned long int *dig, t_flag *flags, int *dot)
 		flags->minx = 1;
 	}
 	else
-		len = ft_lenhex(*dig, flags);
+		len = ft_lenp(*dig, flags) + 2;
 	if (flags->dot > len && !flags->ptr)
 	{
 		*dot = flags->dot - len;

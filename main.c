@@ -1,20 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wsallei <wsallei@student.21-school.ru>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 22:53:42 by wsallei           #+#    #+#             */
-/*   Updated: 2020/07/29 22:53:44 by wsallei          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
-#include "libftprintf.a"
-int		main(void)
+#include "./include/ft_printf.h"
+
+int main(void)
 {
-	ft_printf("%5%\n");
-	printf("%5%\n");
+	char *str = "he";
+	int a = 42;
+	int b;
+	int c;
+	c = ft_printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x\n\n", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	b = printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x\n\n", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0);
+	printf("%d\n",c);
+	printf("%d\n",b);
 	return 0;
 }
