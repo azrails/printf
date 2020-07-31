@@ -107,7 +107,10 @@ void	ft_printptr(t_flag *flags, unsigned long int dig, char ud)
 	int dot;
 
 	if (!(tmp = malloc(sizeof(int) * 20)))
+	{
+		flags->count = -1;
 		return ;
+	}
 	len = ft_pproc(&dig, flags, &dot);
 	if (flags->width != 0 && flags->minus == 0 &&
 	flags->width > len && flags->minx == 0)
